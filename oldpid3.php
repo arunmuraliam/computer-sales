@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {font-size: 20px}
+.style3 {font-size: 24px}
+.style4 {font-size: 18px}
+.style5 {	font-size: 24px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<?php
+$s1=$_POST["c1"];
+$s2=$_POST["t1"];
+$s3=$_POST["t2"];
+$s4=$_POST["t3"];
+$s5=$_POST["t4"];
+?>  
+<div id="Layer1" style="position:absolute; left:457px; top:30px; width:676px; height:151px; z-index:1; font-size: 24px; font-weight: bold;">
+  <div align="center">
+    <p class="style3">Old Products Model Entry </p>
+	<form name="form1" method="post" action="oldpid2.php">
+  <table width="447" height="63" border="1" cellpadding="0" cellspacing="0">
+	
+      <tr>
+        <td width="199"><span class="style1">Select Old Product ID </span></td>
+        <td width="129">
+          <select name="c1" id="c1">
+            <?php 
+			 
+				include("connection.php");
+				
+				$s=mysql_query("select * from oldproductreg");
+				echo "<option>$s1</option>";
+				while($row=mysql_fetch_array($s))
+				{
+				if($s1==$row[0])
+				  continue;
+					echo "<option>$row[0]</option>";
+				}
+			?>
+          </select></td>
+        <td width="111">
+          <input name="Submit" type="submit" id="Submit" value="View">
+        </td>
+      </tr>
+	  
+    </table>
+	</form>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<div align="center">
+  <div id="Layer1" style="position:absolute; left:32px; top:276px; width:365px; height:215px; z-index:1; font-size: 24px; font-weight: bold;">
+    <div align="center">
+      <p>Details</p>
+      <table width="293" border="1" cellspacing="0" cellpadding="0">
+        <?php
+		
+		include("connection.php");
+	  	$s=mysql_query("select * from oldproductreg where oldpid='$s1'");
+		if($row=mysql_fetch_array($s))
+		{
+			$pname=$row[1];
+			$ptype=$row[2];
+			$filename=$row[3];
+			$psp=$row[4];
+		}
+	  ?>
+        <tr>
+          <td width="138"><span class="style4">Old PID </span></td>
+          <td width="149"><?php echo "$s1"; ?>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><span class="style4">Product Name </span></td>
+          <td><?php echo "$pname"; ?>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><span class="style4">Type</span></td>
+          <td><?php echo "$ptype"; ?>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><span class="style4">Specification</span></td>
+          <td><?php echo "$psp"; ?>&nbsp;</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+  <div id="Layer2" style="position:absolute; left:429px; top:286px; width:251px; height:177px; z-index:2">
+   <?php echo "<img src='./oldprdpic/$filename' width='200' height='200'>";  ?> </div>
+  <div id="Layer3" style="position:absolute; left:755px; top:263px; width:312px; height:222px; z-index:3; font-size: 24px; font-weight: bold;">
+    <div align="center">
+      <p>Existing Model </p>
+      <?php
+	    
+		$s=mysql_query("select * from oldacchild where oldpid='$s1' ");
+		if(mysql_num_rows($s)==0)
+		{
+			echo "<b>No models registered";
+		} 
+		else
+		{
+			echo "<table border='1' width='100%' >
+				<tr>
+					<th>Model No</th>
+					<th>Purchase Price</th>
+					<th>Sale Price</th>
+				</tr>";
+			while($row=mysql_fetch_array($s))
+			{
+				echo "<tr>
+						<td>$row[1]</td>
+						<td>$row[2]</td>
+						<td>$row[3]</td>
+					</tr>";
+			}	
+			echo "</table>";
+		}
+	?>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+  <div id="Layer4" style="position:absolute; left:1100px; top:235px; width:353px; height:295px; z-index:4">
+    <div align="center" class="style5">
+      <p>New Model </p>
+      <form name="form1" method="post" action="oldpid3.php">
+        <table width="341" border="1" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="128"><span class="style4">Model No</span></td>
+            <td width="207"><?php echo "$s2"; ?>&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="27"><span class="style4">Purchase Price </span></td>
+            <td><?php echo "$s3"; ?>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><span class="style4">Sale Price </span></td>
+            <td><?php echo "$s4"; ?>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><span class="style4">Details</span></td>
+            <td><?php echo "$s5"; ?>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+                </div></td>
+          </tr>
+        </table>
+		<?php 
+			$s=mysql_query("select * from oldacchild where oldpid='$s' and model='$s2'");
+			if(mysql_num_rows($s)>0)
+			{
+				echo "<b>This model exists";
+			}
+			else
+			{
+				$s="insert into oldacchild values('$s1','$s2','$s3','$s4','$s5')";
+				if(mysql_query($s))
+				{
+					echo "New model added";
+				}
+				else
+				{
+					echo "Model not added";
+				}
+			}
+		?>
+		
+		<?php
+		echo "<input type='hidden' name='c1' value='$s1'>";
+		?>
+      </form>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

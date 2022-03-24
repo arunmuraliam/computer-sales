@@ -1,0 +1,130 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+.navbar {
+  overflow: hidden;
+  background-color:#174366;
+  padding-left:5.3%;
+  width:100%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+	
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #383838;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+} 
+</style>
+</head>
+<script>
+function logout()
+{
+window.open("signin.php");
+self.close();
+}
+
+</script>
+<body>
+
+<div class="navbar">
+  <a href="customerprocess.php">Home</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Buy 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="custorder1.php">New Product</a>
+      
+	        
+    </div>
+  </div> 
+  <a href="custorderstatus1.php">Order Status</a>
+  <div class="dropdown">
+    <button class="dropbtn">Sell 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="oldprdrequest1.php">Send Request To Sell Old Products</a>
+      <a href="oldprdresview1.php">Response Of Sale Request</a>
+	        <a href="sendoldproduct1.php">Send Old Product</a>
+			<a href="oldprdpaymentview1.php">Old Product Payment Details</a>
+    </div>
+  </div> 
+  
+  <div class="dropdown">
+    <button class="dropbtn">Feedback 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="feed11.php">Send</a>
+      <a href="feedreplyview11.php">View Reply</a>
+	  
+	        
+    </div>
+  </div>
+ <a href="customerprofile1.php">Profile</a>
+
+ <a href="javascript:logout()">Signout</a>
+ 
+</div>
+
+</body>
+</html>

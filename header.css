@@ -1,0 +1,18 @@
+header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+    width: 100%;
+    box-sizing: border-box;
+}
+header .logo
+{
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    float: left;
+    font-weight: bold;
+}
